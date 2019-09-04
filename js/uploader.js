@@ -5,9 +5,12 @@
     let dropBox = document.getElementById('drop_box')
     fileInput.addEventListener('change', function () {
         let file = fileInput.files[0];
+        console.log(file);
         let reader = new FileReader();
+        // reader.readAsBinaryString(file, 'utf-8');
         reader.readAsDataURL(file, 'utf-8');//读取文件为二进制
         reader.onload = function (arg) {
+            // debugger
             console.log(arg);
             let baseUrl = arg.target.result;
             let _htmlTag = document.createElement('img');
@@ -21,29 +24,29 @@
     dropBox.addEventListener('drop', fileSelect, false);
 
     function dragOver(evt) {
-debugger
-        console.log(111);
-        evt.stopPropagation();
-        evt.preventDefault();
-        evt.dataTransfer.dropEffect = 'copy';
+        // debugger
+        // console.log(111);
+        // evt.stopPropagation();
+        // evt.preventDefault();
+        // evt.dataTransfer.dropEffect = 'copy';
     }
 
     function fileSelect(evt) {
-debugger
-        evt.stopPropagation();
-        evt.preventDefault();
-
-        var files = evt.dataTransfer.files; // 文件对象
-        var output = [];
-
-        // 处理多文件
-        for (var i = 0, f; f = files[i]; i++) {
-            output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-                f.size, ' bytes, last modified: ',
-                f.lastModifiedDate.toLocaleDateString(), '</li>');
-        }
-        // 显示文件信息
-        document.getElementById('list').innerHTML = output.join('');
+        debugger
+        // evt.stopPropagation();
+        // evt.preventDefault();
+        //
+        // var files = evt.dataTransfer.files; // 文件对象
+        // var output = [];
+        //
+        // // 处理多文件
+        // for (var i = 0, f; f = files[i]; i++) {
+        //     output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+        //         f.size, ' bytes, last modified: ',
+        //         f.lastModifiedDate.toLocaleDateString(), '</li>');
+        // }
+        // // 显示文件信息
+        // document.getElementById('list').innerHTML = output.join('');
     }
 
 
